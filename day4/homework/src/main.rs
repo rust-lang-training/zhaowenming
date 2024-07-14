@@ -13,7 +13,6 @@ struct Order {
     quantity: u32,
     total_price: f64,
 }
-
 struct User {
     name: String,
     balance: f64,
@@ -163,7 +162,7 @@ fn main() {
                 continue;
             }
         };
-
+        
         match choice {
             1 => {
                 store.list_categories();
