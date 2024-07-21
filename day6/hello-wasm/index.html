@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello WebAssembly</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <button id="btn">加密</button>
+    <button id="btn1">解密</button>
+    <h1 id="output"></h1>
+
+</body>
+
+</html>
+<script type="module">
+    import init, { greet, encrypt_message, decrypt_message } from "./pkg/hello_wasm.js";
+    async function run() {
+        const wasm = await init();
+        const greeting = greet("World");
+        document.getElementById("output").innerText = greeting;
+
+    }
+    run();
+    let encrypt = null
+    btn.onclick = function () {
+        let value = input.value
+        encrypt = encrypt_message(value)
+        console.log(encrypt, "加密");
+
+    }
+
+    btn1.onclick = function () {
+        console.log(decrypt_message(encrypt), "解密");
+
+    }
+</script>
